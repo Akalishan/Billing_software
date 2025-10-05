@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Menubar } from "./components/Menubar/Menubar";
+import { Menubar } from "./components/Menubar";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { ManageCategory } from "./pages/ManageCategory/ManageCategory";
 import { ManageUsers } from "./pages/ManageUsers/ManageUsers";
