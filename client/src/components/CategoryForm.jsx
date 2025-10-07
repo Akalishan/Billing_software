@@ -69,7 +69,7 @@ export const CategoryForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white px-8 py-3 rounded-md hover:bg-blue-600 transition-colors duration-300 font-medium"
+              className="w-full bg-yellow-500 text-white px-8 py-3 rounded-md hover:bg-blue-600 transition-colors duration-300 font-medium"
             >
               Save
             </button>

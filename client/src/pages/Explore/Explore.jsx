@@ -5,7 +5,7 @@ export const Explore = () => {
     const {categories}=useContext(AppContext); 
     console.log(categories);
   return (
-    <div className="pt-[5rem] bg-[#2C3335] min-h-screen box-border">
+    <div className="pt-2 bg-[#2C3335] min-h-screen box-border">
       <div className="flex gap-5 p-5 h-[calc(100vh-5rem)] bg-[#2C3335] box-border text-white">
         {/* Left Column */}
         <div className="flex-[0.7] border border-gray-300 rounded-lg p-4 h-full flex flex-col">
