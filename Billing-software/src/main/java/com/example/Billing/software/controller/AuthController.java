@@ -34,7 +34,7 @@ public class AuthController {
         final UserDetails userDetails=appUserDetailsService.loadUserByUsername(request.getEmail());
         final String jwtToken=jwtUtil.generateToken(userDetails);
         String  role=userService.getUserRole(request.getEmail());
-        return new AuthResponse(request.getEmail(),"USER",jwtToken );
+        return new AuthResponse(request.getEmail(),jwtToken,role);
     }
 
     private void authenticate(String password, String email) throws Exception {
