@@ -1,4 +1,4 @@
-export const UserForm = () => {
+export const UserForm = ({setUsers}) => {
   return (
     <div className="mx-2 mt-4">
       <div className="bg-white shadow-md rounded-lg p-6 w-full md:w-2/3 mx-auto">

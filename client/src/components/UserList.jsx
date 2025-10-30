@@ -1,3 +1,3 @@
-export const UserList = () => {
+export const UserList = ({users,setUsers}) => {
   return <div>UserList</div>;
 };
