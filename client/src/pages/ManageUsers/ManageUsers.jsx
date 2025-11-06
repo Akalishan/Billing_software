@@ -8,10 +8,10 @@ export const ManageUsers = () => {
   const [loading, setloading] = useState(false);
 
   useEffect(() => {
-    async function fetchUsers() {
+    async function loadUsers() {
       try {
         setloading(true);
-        const response = await fetchUsers();
+        const response = await fetchUser();
         setUsers(response.data);
       } catch (error) {
         console.error(error);
@@ -20,7 +20,7 @@ export const ManageUsers = () => {
         setloading(false);
       }
     }
-    fetchUsers();
+    loadUsers();
   },[]);
 
   return (
