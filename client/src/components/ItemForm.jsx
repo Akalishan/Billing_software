@@ -3,7 +3,8 @@ import { AppContext } from "../context/AppContext.jsx";
 import { assets } from "../assets/assets.js";
 import toast from "react-hot-toast";
 export const ItemForm = () => {
-  const { categories, setItemsData, itemsData } = useContext(AppContext);
+  const { categories, setItemsData, itemsData, setCategories } =
+    useContext(AppContext);
   const [image, setImage] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
@@ -31,15 +32,21 @@ export const ItemForm = () => {
       const response = await addItem(formData);
       if (response.status === 201) {
         setItemsData([...itemsData, response.data]);
-        //Todo update the category
+        setCategories((prevCategories) =>
+          prevCategories.map((category) =>
+            category.categoryId === data.categoryId
+              ? { ...category, items: category.items + 1 }
+              : category
+          )
+        );
         toast.success("Item added");
         setData({
           name: "",
           description: "",
           price: "",
           categoryId: "",
-        })
-        setImage(false); 
+        });
+        setImage(false);
       } else {
         toast.error("unable to add item ");
       }
@@ -49,7 +56,7 @@ export const ItemForm = () => {
     } finally {
       setLoading(false);
     }
-  };    
+  };
   return (
     <div className="h-100vh overflow-y-auto overflow-x-hidden">
       <div className="mx-2 mt-4">
