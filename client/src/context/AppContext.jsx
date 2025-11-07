@@ -1,39 +1,47 @@
-import { createContext, useEffect,useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { fetchCategories } from "../Service/CategoryService";
 
 export const AppContext = createContext(null);
 
 export const AppContextprovider = (props) => {
-    const [categories, setCategories] = useState([]);
-    const [auth,setAuth]=useState({
-      token:null,
-      role:null
-    })
-    const[itemsData,setItemsData]=useState([]);
-    useEffect(() => {
-      async function loadData() {
-        const response = await fetchCategories();
-        const itemResponse=await fetchItems();
-        setCategories(response.data);
-        setItemsData(itemResponse.data);
+  const [categories, setCategories] = useState([]);
+  const [auth, setAuth] = useState({
+    token: null,
+    role: null,
+  });
+  const [itemsData, setItemsData] = useState([]);
+  useEffect(() => {
+    async function loadData() {
+      if (localStorage.getItem("token") && localStorage.getItem("role")) {
+        setAuthData(
+          JSON.parse(
+            localStorage.getItem("token"),
+            localStorage.getItem("role")
+          ) 
+        );
       }
-      loadData();
-    }, []);
-    const setAuthData=(token,role)=>{
-      setAuth({token,role});
+      const response = await fetchCategories();
+      const itemResponse = await fetchItems();
+      setCategories(response.data);
+      setItemsData(itemResponse.data);
     }
-    const contextValue = {
-      categories,
-      setCategories,
-      auth,
-      setAuthData,
-      itemsData, 
-      setItemsData 
-    };
+    loadData();
+  }, []);
+  const setAuthData = (token, role) => {
+    setAuth({ token, role });
+  };
+  const contextValue = {
+    categories,
+    setCategories,
+    auth,
+    setAuthData,
+    itemsData,
+    setItemsData,
+  };
 
-    return (
-      <AppContext.Provider value={contextValue}>
-        {props.children}
-      </AppContext.Provider>
-    );
+  return (
+    <AppContext.Provider value={contextValue}>
+      {props.children}
+    </AppContext.Provider>
+  );
 };
