@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash,FaSearch } from "react-icons/fa";
 import { deleteUser } from "../Service/UserService";
 import toast from "react-hot-toast";
 
 export const UserList = ({ users, setUsers }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+const filteredUsers = Array.isArray(users)
+    ? users.filter((user) =>
+        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
   const deleteByUserId = async (id) => {
     try {
       await deleteUser(id);

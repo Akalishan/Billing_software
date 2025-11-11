@@ -1,14 +1,15 @@
 import { useContext} from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { data, useNavigate, } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
+import { login } from "../../Service/AuthService";
 
 const Login = () => {
   const {setAuthData}=useContext(AppContext);
  const navigate=  useNavigate(); 
   const [loading,setLoading] = useState("");
-  const[set,setData] = useState(
+  const[data,setData] = useState(
     {email:"",
     password:""
     });
@@ -26,7 +27,7 @@ const Login = () => {
         toast.success("Login successful");
         localStorage.setItem("token",response.data.token);
         localStorage.setItem("role",response.data.role);
-        setAuthData(response.data.token,response.token.role);
+        setAuthData(response.data.token,response.data.role);
         navigate("/dashboard")
       }
     } catch (error) {

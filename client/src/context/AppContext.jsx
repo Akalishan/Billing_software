@@ -10,6 +10,33 @@ export const AppContextprovider = (props) => {
     role: null,
   });
   const [itemsData, setItemsData] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const addToCart = (item) => {
+    const existingItem = cartItems.find(
+      (cartItem) => cartItem.name === item.name
+    );
+    if (existingItem) {
+      setCartItems(
+        cartItems.map((cartItem) =>
+          cartItem.name === item.name
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+    }
+  };
+  const removeFromCart = (itemId) => {
+    setCartItems(cartItems.filter((item) => item.itemId !== itemId));
+  };
+  const updateQuantity = (itemId) => {
+    setCartItems(
+      cartItems.map((item) =>
+        item.itemId === itemId ? { ...item, quantity: newQuantitty } : item
+      )
+    );
+  };
   useEffect(() => {
     async function loadData() {
       if (localStorage.getItem("token") && localStorage.getItem("role")) {
@@ -17,7 +44,7 @@ export const AppContextprovider = (props) => {
           JSON.parse(
             localStorage.getItem("token"),
             localStorage.getItem("role")
-          ) 
+          )
         );
       }
       const response = await fetchCategories();
@@ -37,6 +64,11 @@ export const AppContextprovider = (props) => {
     setAuthData,
     itemsData,
     setItemsData,
+    cartItems,
+    setCartItems,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
   };
 
   return (

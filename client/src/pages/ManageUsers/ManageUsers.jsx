@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { UserForm } from "../../components/UserForm";
 import { UserList } from "../../components/UserList";
 import toast from "react-hot-toast";
+import { fetchUser } from "../../Service/UserService";
 
 export const ManageUsers = () => {
   const [users, setUsers] = useState([]);

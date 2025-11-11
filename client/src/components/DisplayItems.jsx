@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Item } from "./Item";
 import { SearchBox } from "./SearchBox";
+import { AppContext } from "../context/AppContext";
 
 export const DisplayItems = ({ selectedCategory }) => {
   const { itemsData } = useContext(AppContext);

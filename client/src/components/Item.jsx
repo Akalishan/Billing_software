@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ShoppingCart, Plus } from "lucide-react";
+import { AppContext } from "../context/AppContext";
 
 export const Item = (itemId, itemPrice, itemImage, itemName) => {
+  const {addTocart}=useContext(AppContext);
+  const handleAddToCart=()=>{
+    addTocart({
+      name:itemName,
+      price:itemPrice,
+      quantity:1,
+      itemId:itemId 
+    })
+  }
   return (
     <div className="p-3 bg-blend-darken rounded shadow-sm h-100 flex items-center">
       <div className="relative m-[15px]">

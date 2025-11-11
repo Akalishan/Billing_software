@@ -37,9 +37,11 @@ export const Menubar = () => {
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-gray-900 shadow-md relative">
       {/* Left side (Logo + Links) */}
       <div className="hidden sm:flex items-center gap-8">
-        <Link to="/" className="flex items-center font-bold text-2xl text-white">
+        <Link
+          to="/"
+          className="flex items-center font-bold text-2xl text-white"
+        >
           <img src={assets.logo} alt="Logo" className="h-8 mr-2" />
-          NexusAuto
         </Link>
 
         <Link to="/dashboard" className={navLinkClass}>

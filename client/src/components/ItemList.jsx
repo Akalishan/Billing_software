@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext.jsx";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash,FaSearch } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 export const ItemList = () => {
