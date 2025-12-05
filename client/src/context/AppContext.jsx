@@ -57,6 +57,10 @@ export const AppContextprovider = (props) => {
   const setAuthData = (token, role) => {
     setAuth({ token, role });
   };
+
+  const clearCart=()=>{
+    setCartItems([]);
+  }
   const contextValue = {
     categories,
     setCategories,
@@ -69,6 +73,7 @@ export const AppContextprovider = (props) => {
     addToCart,
     removeFromCart,
     updateQuantity,
+    clearCart
   };
 
   return (
