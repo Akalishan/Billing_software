@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface OrderEntityRepository extends JpaRepository<OrderEntity,Long> {
    Optional<OrderEntity> findByOrderId(String orderId);
-   List<OrderEntity> findAllByOrderCreatedAtDesc();
+   List<OrderEntity> findAllByOrderByCreatedAtDesc();
 }

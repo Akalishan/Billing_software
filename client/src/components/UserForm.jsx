@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { addUser } from "../Service/UserService";
 
 export const UserForm = ({ setUsers }) => {
   const [loading, setLoading] = useState(false);

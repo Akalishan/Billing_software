@@ -59,6 +59,9 @@ export const Menubar = () => {
         <Link to="/users" className={navLinkClass}>
           Manage Users
         </Link>
+        <Link to="/orders" className={navLinkClass}>
+          Order History
+        </Link>
 
         {/* Tailwind Dropdown */}
         <div className="relative" ref={dropdownRef}>
