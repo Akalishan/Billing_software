@@ -27,7 +27,7 @@ export const AppContextprovider = (props) => {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
   };
-  const removeFromCart = (itemId) => {
+  const removeFromCart = (itemId) => { 
     setCartItems(cartItems.filter((item) => item.itemId !== itemId));
   };
   const updateQuantity = (itemId) => {
