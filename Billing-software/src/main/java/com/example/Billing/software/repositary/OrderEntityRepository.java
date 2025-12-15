@@ -13,10 +13,10 @@ import java.util.Optional;
 public interface OrderEntityRepository extends JpaRepository<OrderEntity,Long> {
    Optional<OrderEntity> findByOrderId(String orderId);
    List<OrderEntity> findAllByOrderByCreatedAtDesc();
-   @Query("SELECT SUM(o.grandTotal) From OrderEntity o WHERE DATE(o.createdAt)=:date")
+   @Query("SELECT SUM(o.grandTotal) From OrderEntity o WHERE DATE(o.createdAt)= :date")
    Double sumSalesByDate(@Param("date")LocalDate date);
 
-   @Query("SELECT COUNT(o) FROM OrderEntity o WHERE DATE(o.createdAt=:date")
+   @Query("SELECT COUNT(o) FROM OrderEntity o WHERE DATE(o.createdAt)= :date")
    Long countByOrderDate(@Param("date") LocalDate date);
 
    @Query("SELECT o FROM OrderEntity o ORDER BY o.createdAt DESC")
