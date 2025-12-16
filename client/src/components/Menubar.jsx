@@ -9,7 +9,7 @@ export const Menubar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
-  const { setAuthData } = useContext(AppContext);
+  const { setAuthData, auth } = useContext(AppContext);
 
   const navLinkClass =
     "font-medium uppercase mr-4 transition-colors duration-300 text-white hover:text-gray-400";
@@ -21,6 +21,8 @@ export const Menubar = () => {
     setAuthData(null, null);
     navigate("/login");
   };
+
+  const isAdmin = auth.role === "ROLE_ADMIN";
 
   // Close dropdown if clicked outside
   useEffect(() => {
@@ -50,15 +52,19 @@ export const Menubar = () => {
         <Link to="/explore" className={navLinkClass}>
           Explore
         </Link>
-        <Link to="/items" className={navLinkClass}>
-          Manage Items
-        </Link>
-        <Link to="/category" className={navLinkClass}>
-          Manage Categories
-        </Link>
-        <Link to="/users" className={navLinkClass}>
-          Manage Users
-        </Link>
+        {isAdmin && (
+          <>
+            <Link to="/items" className={navLinkClass}>
+              Manage Items
+            </Link>
+            <Link to="/category" className={navLinkClass}>
+              Manage Categories
+            </Link>
+            <Link to="/users" className={navLinkClass}>
+              Manage Users
+            </Link>
+          </>
+        )}
         <Link to="/orders" className={navLinkClass}>
           Order History
         </Link>
