@@ -57,6 +57,7 @@ export const UserForm = ({ setUsers }) => {
               placeholder="Billium"
               onChange={onChangeHandler}
               value={data.name}
+              required
             />
           </div>
           <div className="mb-3">
@@ -74,6 +75,7 @@ export const UserForm = ({ setUsers }) => {
               placeholder="YourName@example.com"
               onChange={onChangeHandler}
               value={data.email}
+              required
             />
           </div>
 
@@ -92,6 +94,7 @@ export const UserForm = ({ setUsers }) => {
               placeholder="*******"
               onChange={onChangeHandler}
               value={data.password}
+              required
             />
           </div>
 

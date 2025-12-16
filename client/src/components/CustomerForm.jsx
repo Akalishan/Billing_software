@@ -23,7 +23,8 @@ export const CustomerForm = ({
           value={customerName}
           onChange={(e) => setCustomerName(e.target.value)}
           className="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+          required
+       />
       </div>
 
       {/* Mobile Number Field */}
@@ -41,6 +42,7 @@ export const CustomerForm = ({
           value={mobileNumber}
           onChange={(e) => setMobileNumber(e.target.value)}
           className="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          required
         />
       </div>
     </div>
